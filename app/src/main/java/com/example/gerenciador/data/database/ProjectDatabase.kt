@@ -13,7 +13,7 @@ import com.example.gerenciador.data.model.Task
 
 @Database(
     entities = [Project::class, Task::class],
-    version = 2, // 🆕 VERSÃO 2
+    version = 2,
     exportSchema = false
 )
 abstract class ProjectDatabase : RoomDatabase() {
@@ -25,7 +25,6 @@ abstract class ProjectDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: ProjectDatabase? = null
 
-        // 🆕 MIGRATION DE VERSÃO 1 PARA 2
         private val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 // Adiciona as novas colunas de timer
@@ -48,7 +47,7 @@ abstract class ProjectDatabase : RoomDatabase() {
                     ProjectDatabase::class.java,
                     "project_database"
                 )
-                    .addMigrations(MIGRATION_1_2) // 🆕 ADICIONA A MIGRATION
+                    .addMigrations(MIGRATION_1_2)
                     .build()
                 INSTANCE = instance
                 instance

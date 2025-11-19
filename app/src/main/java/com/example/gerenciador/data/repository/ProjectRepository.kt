@@ -17,7 +17,7 @@ class ProjectRepository @Inject constructor(
     private val gitHubApi: GitHubApi
 ) {
 
-    // === MÉTODOS PARA PROJECTS ===
+    // Métodos de projetos
     suspend fun insertProject(project: Project): Long {
         return projectDao.insert(project)
     }
@@ -58,7 +58,7 @@ class ProjectRepository @Inject constructor(
         return projectDao.getAll()
     }
 
-    // === MÉTODOS PARA TASKS ===
+    // Métodos das tasks
     suspend fun insertTask(task: Task): Long {
         return taskDao.insert(task)
     }
@@ -99,12 +99,12 @@ class ProjectRepository @Inject constructor(
         return taskDao.deleteByProject(projectId)
     }
 
-    // ✅ NOVA FUNÇÃO: Atualizar status da tarefa
+    // Atualizar o status da tarefa
     suspend fun updateTaskStatus(taskId: Long, newStatus: TaskStatus) {
         taskDao.updateTaskStatus(taskId, newStatus.name)
     }
 
-    // === MÉTODOS PARA INTEGRAÇÃO COM GITHUB API ===
+    // Métodos de integração com o github
     suspend fun importIssuesFromGitHub(owner: String, repo: String, projectId: Long): Result<Int> {
         return try {
             val response = gitHubApi.getIssues(owner, repo)

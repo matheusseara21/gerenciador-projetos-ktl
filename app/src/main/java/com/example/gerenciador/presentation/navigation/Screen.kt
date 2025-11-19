@@ -26,6 +26,6 @@ sealed class Screen(val route: String) {
         }
     }
 
-    // 🆕 NOVA ROTA PARA IMPORTAR DO GITHUB
+    // Rota de import do github
     object ImportRepository : Screen("import_repository")
 }

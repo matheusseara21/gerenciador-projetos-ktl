@@ -61,7 +61,7 @@ fun ImportRepositoryScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Text(
-                        text = "📦 Importar Issues do GitHub",
+                        text = "Importar Issues do GitHub",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )

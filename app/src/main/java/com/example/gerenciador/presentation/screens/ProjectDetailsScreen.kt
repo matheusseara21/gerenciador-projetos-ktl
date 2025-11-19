@@ -222,7 +222,7 @@ fun ProjectProgressCard(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "📊 Progresso do Projeto",
+                text = "Progresso do Projeto",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onPrimaryContainer

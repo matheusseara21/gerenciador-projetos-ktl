@@ -30,7 +30,7 @@ class TaskEditViewModel @Inject constructor(
     private val _taskUiState = MutableStateFlow(TaskUiState())
     val taskUiState: StateFlow<TaskUiState> = _taskUiState.asStateFlow()
 
-    // 🆕 Job para controlar a coroutine do timer
+    // Job da coroutine do timer
     private var timerJob: Job? = null
 
     init {
@@ -49,15 +49,12 @@ class TaskEditViewModel @Inject constructor(
                         descricao = task.descricao,
                         status = task.status,
                         tempoTrabalhado = task.tempoTrabalhado,
-                        timerAtivo = false, // 🆕 Sempre inicia pausado
+                        timerAtivo = false,
                         ultimoInicioTimer = 0L,
                         taskOriginal = task
                     )
                 }
 
-                // 🆕 REMOVIDO: Não retoma o timer automaticamente
-                // Se quiser que retome, descomente a linha abaixo:
-                // if (task.timerAtivo) { startTimer() }
             }
         }
     }
@@ -74,11 +71,7 @@ class TaskEditViewModel @Inject constructor(
         _taskUiState.update { it.copy(status = status) }
     }
 
-    // 🆕 FUNÇÕES DO TIMER
-
-    /**
-     * Inicia ou pausa o timer
-     */
+    // Funções do timer
     fun toggleTimer() {
         val state = _taskUiState.value
 
@@ -140,9 +133,7 @@ class TaskEditViewModel @Inject constructor(
         saveTimerState()
     }
 
-    /**
-     * 🆕 Pausa o timer ao sair da tela (chamado pelo DisposableEffect)
-     */
+    // Pausar o timer e sair
     fun pauseTimerOnExit() {
         if (_taskUiState.value.timerAtivo) {
             pauseTimer()

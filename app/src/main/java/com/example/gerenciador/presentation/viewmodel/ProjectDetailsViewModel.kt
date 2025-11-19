@@ -38,14 +38,12 @@ class ProjectDetailsViewModel @Inject constructor(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
-    // TASK 4.3 & 4.4: GITHUB IMPORT
     private val _showGitHubImportDialog = MutableStateFlow(false)
     val showGitHubImportDialog: StateFlow<Boolean> = _showGitHubImportDialog.asStateFlow()
 
     private val _githubImportState = MutableStateFlow(GitHubImportState())
     val githubImportState: StateFlow<GitHubImportState> = _githubImportState.asStateFlow()
 
-    // ✅ CORREÇÃO: Adicione o state isImporting que está faltando
     private val _isImporting = MutableStateFlow(false)
     val isImporting: StateFlow<Boolean> = _isImporting.asStateFlow()
 
@@ -86,7 +84,6 @@ class ProjectDetailsViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            // ✅ CORREÇÃO: Use _isImporting para o dialog do GitHub
             _isImporting.value = true
             _errorMessage.value = null
 
@@ -97,18 +94,18 @@ class ProjectDetailsViewModel @Inject constructor(
                     projectId = navProjectId
                 )
 
-                _errorMessage.value = "✅ ${result.getOrThrow()} tarefas importadas!"
+                _errorMessage.value = "${result.getOrThrow()} tarefas importadas!"
                 closeGitHubImportDialog()
 
             } catch (e: Exception) {
-                _errorMessage.value = "❌ Erro ao importar: ${e.message}"
+                _errorMessage.value = "Erro ao importar: ${e.message}"
             } finally {
                 _isImporting.value = false
             }
         }
     }
 
-    // ✅ FUNÇÃO: Marcar/Desmarcar tarefa como concluída
+    // Marcar/desmarcar tarefa
     fun toggleTaskCompletion(task: Task) {
         viewModelScope.launch {
             try {

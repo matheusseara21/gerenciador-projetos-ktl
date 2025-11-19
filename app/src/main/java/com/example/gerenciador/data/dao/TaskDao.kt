@@ -47,7 +47,7 @@ interface TaskDao {
     @Query("DELETE FROM tasks WHERE projectId = :projectId")
     suspend fun deleteByProject(projectId: Long): Int
 
-    // ✅ NOVA FUNÇÃO: Atualizar apenas o status de uma tarefa
+    // Atualizar o status da tarefa
     @Query("UPDATE tasks SET status = :newStatus WHERE id = :taskId")
     suspend fun updateTaskStatus(taskId: Long, newStatus: String)
 }

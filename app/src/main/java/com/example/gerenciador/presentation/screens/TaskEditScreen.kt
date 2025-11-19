@@ -100,7 +100,7 @@ fun TaskEditScreen(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // ✅ BOTÃO PARA MARCAR COMO CONCLUÍDA
+                    // Botão para marcar como concluída
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -147,7 +147,7 @@ fun TaskEditScreen(
 
                             Text(
                                 text = if (taskUiState.status == TaskStatus.CONCLUIDA) {
-                                    "✅ Esta tarefa está marcada como concluída"
+                                    "Esta tarefa está marcada como concluída"
                                 } else {
                                     "Clique para marcar esta tarefa como concluída"
                                 },
@@ -180,7 +180,7 @@ fun TaskEditScreen(
                         modifier = Modifier.padding(16.dp)
                     ) {
                         Text(
-                            text = "⏱️ Timer de Trabalho",
+                            text = "Timer de Trabalho",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
                         )
@@ -226,7 +226,7 @@ fun TaskEditScreen(
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = "📝 Detalhes da Tarefa",
+                        text = "Detalhes da Tarefa",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )

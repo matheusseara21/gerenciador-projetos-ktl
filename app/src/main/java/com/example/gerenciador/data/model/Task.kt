@@ -24,7 +24,7 @@ data class Task(
     val dataCriacao: Long = System.currentTimeMillis(),
     val dataConclusao: Long? = null,
     val status: TaskStatus = TaskStatus.PENDENTE,
-    // 🆕 NOVOS CAMPOS PARA O TIMER
+    // Campos para timer
     val tempoTrabalhado: Long = 0L, // Tempo em milissegundos
     val timerAtivo: Boolean = false, // Se o timer está rodando
     val ultimoInicioTimer: Long = 0L // Timestamp de quando foi iniciado

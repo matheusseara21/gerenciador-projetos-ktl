@@ -13,15 +13,11 @@ object ShareUtil {
 
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-    /**
-     * Gera um relatório em texto de um projeto e suas tarefas.
-     * Esta é a lógica da Task 5.1
-     */
     fun createProjectReport(project: Project, tasks: List<Task>): String {
         val stringBuilder = StringBuilder()
 
         // 1. Título e Cliente
-        stringBuilder.appendLine("🚀 Relatório do Projeto: ${project.nome}")
+        stringBuilder.appendLine("Relatório do Projeto: ${project.nome}")
         stringBuilder.appendLine("Cliente: ${project.cliente}")
 
         // 2. Deadline
@@ -53,9 +49,7 @@ object ShareUtil {
         return stringBuilder.toString()
     }
 
-    /**
-     * Gera um texto simples para compartilhar uma única tarefa.
-     */
+    // Texto simples de compartilhamento de tarefa
     fun createTaskReport(task: Task, projectName: String): String {
         return """
             Confira o status da minha tarefa:
